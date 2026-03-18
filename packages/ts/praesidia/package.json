@@ -1,0 +1,65 @@
+{
+  "name": "@praesidia/neurogent",
+  "version": "0.1.0",
+  "description": "Run a team of AI experts in your terminal. Build and deploy production-ready A2A agents.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/praesidia/neurogent.git"
+  },
+  "homepage": "https://github.com/praesidia/neurogent#readme",
+  "bugs": {
+    "url": "https://github.com/praesidia/neurogent/issues"
+  },
+  "keywords": ["ai", "agents", "llm", "terminal", "a2a", "multi-agent", "cli", "anthropic", "openai", "sdk"],
+  "type": "module",
+  "bin": {
+    "neurogent": "./dist/cli/index.js",
+    "neurogent-shell": "./dist/shell/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./security": {
+      "import": "./dist/security/index.js",
+      "types": "./dist/security/index.d.ts"
+    }
+  },
+  "files": ["dist", "examples"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint \"src/**/*.ts\"",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^1.0.0",
+    "@ai-sdk/openai": "^1.0.0",
+    "@hono/node-server": "^1.12.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "ai": "^4.0.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "fs-extra": "^11.2.0",
+    "hono": "^4.4.0",
+    "ink": "^5.0.1",
+    "ink-text-input": "^6.0.0",
+    "js-yaml": "^4.1.0",
+    "react": "^18.3.0",
+    "yaml": "^2.4.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "tsup": "^8.1.0",
+    "typescript": "^5.7.0",
+    "vitest": "^1.6.0"
+  }
+}

@@ -1,0 +1,21 @@
+name: Sales Research Agent
+version: 1.0.0
+description: Analyzes a target company and generates a custom sales outreach strategy.
+author: Acme Corp
+license: MIT
+capabilities:
+  - web-search
+  - document-analysis
+  - outbound-email
+
+model:
+  provider: openai
+  name: gpt-4o
+
+tools:
+  - name: scrape-website
+    description: Extracts text from a public URL
+    type: inline
+
+praesidia:
+  policy: ./praesidia.policy.yaml

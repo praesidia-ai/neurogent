@@ -1,0 +1,9 @@
+{
+  "name": "sales-research-agent",
+  "type": "module",
+  "dependencies": {
+    "@neuro/sdk": "*",
+    "@praesidia/neurogent": "*",
+    "zod": "^3.23.8"
+  }
+}

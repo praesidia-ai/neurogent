@@ -1,0 +1,38 @@
+{
+  "name": "@neuro/shell",
+  "version": "0.1.0",
+  "description": "Neuro Shell — define your agents, chat with your team, watch them collaborate",
+  "type": "module",
+  "engines": { "node": ">=20.0.0" },
+  "bin": { "neuro-shell": "./dist/index.js" },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./define": "./dist/config/define.js"
+  },
+  "files": ["dist", "examples"],
+  "preferGlobal": false,
+  "scripts": {
+    "dev": "tsx --tsconfig tsconfig.json src/index.tsx",
+    "build": "tsup",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^1.0.0",
+    "@ai-sdk/openai": "^1.0.0",
+    "ai": "^4.0.0",
+    "ink": "^5.0.1",
+    "ink-text-input": "^6.0.0",
+    "js-yaml": "^4.1.0",
+    "react": "^18.3.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "tsx": "^4.19.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0"
+  }
+}

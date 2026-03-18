@@ -1,0 +1,3 @@
+# Never publish from the repo root — packages publish from their own dirs.
+# This file is a safety net in case someone runs npm publish here.
+*

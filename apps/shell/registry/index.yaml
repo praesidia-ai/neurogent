@@ -1,0 +1,24 @@
+# Community Pack Registry
+# Submit a PR to add your pack!
+version: "1.0"
+packs:
+  - name: full-team
+    description: 10 specialized AI agents covering the full engineering org
+    author: community
+    agents: 10
+    tags: [engineering, startup, fullstack]
+    url: builtin
+
+  - name: dev-trio
+    description: 3-agent lean engineering team — ship fast, stay secure
+    author: community
+    agents: 3
+    tags: [engineering, security, review]
+    url: builtin
+
+  - name: solo-researcher
+    description: Single deep research agent with 2048 token budget
+    author: community
+    agents: 1
+    tags: [research, analysis, learning]
+    url: builtin

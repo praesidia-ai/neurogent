@@ -1,0 +1,11 @@
+schema_version: 1.0
+enforcement: strict
+rules:
+  ingress:
+    - rule: block_jailbreak
+      action: reject
+  tools:
+    - match: scrape-website
+      action: allow
+    - match: send_email
+      require_human_approval: true
