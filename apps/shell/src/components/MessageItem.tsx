@@ -42,6 +42,12 @@ export function MessageItem({ message, agents }: Props) {
           <Text color="gray">─</Text>
           <Text color="gray" dimColor>{agent?.role ?? 'Agent'}</Text>
           {message.streaming && <Text color="cyan" dimColor>streaming</Text>}
+          {!message.streaming && message.cost !== undefined && message.cost > 0 && (
+            <Text color="gray" dimColor>${message.cost.toFixed(5)}</Text>
+          )}
+          {message.debateRound !== undefined && (
+            <Text color="yellow" dimColor>round {message.debateRound}</Text>
+          )}
         </Box>
         <Box marginLeft={2}>
           <Text wrap="wrap" color={color}>{display}</Text>

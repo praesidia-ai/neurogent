@@ -46,3 +46,6 @@ coverage/
 Dockerfile
 .dockerignore
 docker-compose.yml
+
+# Neurogent session persistence
+.neurogent-session.json

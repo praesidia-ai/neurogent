@@ -35,9 +35,11 @@ export interface Message {
   content: string;
   streaming: boolean;
   timestamp: number;
+  cost?: number;
+  debateRound?: number;
 }
 
-export type AppMode = 'normal' | 'swarm';
+export type AppMode = 'normal' | 'swarm' | 'debate';
 
 export interface HistoryItem {
   role: 'user' | 'assistant';
