@@ -147,6 +147,10 @@ neurogent-shell --config my-team.yaml
 @agent <message>           Address a specific agent
 @agent1 >> @agent2         Chain — first responds, output goes to second
 /swarm                     All agents respond to your next message
+/debate @agent1 @agent2    Two agents argue opposing sides until consensus
+/bench <question>          Run same prompt through multiple models, compare cost + quality
+/inject <file>             Inject a file into context — agents see it automatically
+/git                       Inject current git diff — agents see exactly what changed
 /agents                    List agents with roles and expertise
 /export                    Save conversation to markdown
 /clear                     Clear the feed
@@ -376,14 +380,28 @@ Open an issue with:
 
 ---
 
+## What's new in v0.2.0
+
+| Feature | Command | What it does |
+|---|---|---|
+| **Debate Mode** | `/debate @nova @orion` | Two agents argue opposing sides until consensus. Unique to Neurogent. |
+| **Benchmark Mode** | `/bench <question>` | Same prompt → multiple models simultaneously. See quality, speed, cost side by side. |
+| **Git context** | `/git` | Injects your current `git diff` automatically. No more pasting code. |
+| **File injection** | `/inject <path>` | Drop any file into context. Agents see it instantly. |
+| **Session persistence** | auto | Conversations survive restarts. Resume exactly where you left off. |
+| **Cost meter** | always on | Real-time token cost per message, per agent. Know exactly what you're spending. |
+
+---
+
 ## Roadmap
 
 - [ ] Web UI dashboard for agent sessions
 - [ ] Agent marketplace — share and discover packs
-- [ ] Persistent memory across sessions
 - [ ] Multi-modal agents (vision, audio)
 - [ ] Native MCP server integrations
 - [ ] VS Code extension
+- [ ] Multiplayer sessions — share a live agent session with your team via URL
+- [ ] CI/CD integration — run your agent team as a GitHub Action
 
 Star the repo to follow along. PRs welcome on any of the above.
 
