@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/neurogent",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Run a team of AI experts in your terminal. Build and deploy production-ready A2A agents.",
   "license": "MIT",
   "repository": {

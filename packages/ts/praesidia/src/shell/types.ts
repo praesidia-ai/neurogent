@@ -18,6 +18,7 @@ export interface AgentDef {
   expertise: string[];   // keywords for auto-routing
   systemPrompt: string;
   model?: AgentModel;    // per-agent model override
+  zeroClawUrl?: string;  // if set, route messages to this ZeroClaw instance
 }
 
 export interface ShellConfig {

@@ -49,3 +49,4 @@ docker-compose.yml
 
 # Neurogent session persistence
 .neurogent-session.json
+scripts/release.sh

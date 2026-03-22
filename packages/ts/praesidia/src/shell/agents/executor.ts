@@ -5,6 +5,7 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { streamText, type CoreMessage } from 'ai';
 import { AgentDef, AgentModel, HistoryItem } from '../types.js';
+import { sendMessage, getAgentUrl } from '../../zeroclaw/client.js';
 
 function detectGlobalProvider(): AgentModel {
   if (process.env.ANTHROPIC_API_KEY) {
@@ -90,6 +91,13 @@ export async function* executeAgent(
   globalModel?: AgentModel,
   onUsage?: (cost: number) => void,
 ): AsyncGenerator<string> {
+  // ZeroClaw routing: prefer agent's own URL, then check runtime.json, then fall through to local LLM
+  const zeroClawUrl = agent.zeroClawUrl ?? getAgentUrl(agent.id) ?? getAgentUrl('*');
+  if (zeroClawUrl) {
+    yield* sendMessage(zeroClawUrl, userMessage);
+    return;
+  }
+
   const modelConfig = getEffectiveModel(agent, globalModel);
   const messageWithFiles = resolveFileContext(userMessage);
   const cleanMessage = messageWithFiles.replace(/@(?!file:)\S+/g, '').trim();

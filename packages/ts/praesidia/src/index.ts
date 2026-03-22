@@ -27,3 +27,16 @@ export type {
 
 // Schema utilities
 export { parseAgentConfig, compileToAgentCard, neuroAgentSchema } from './types.js';
+
+// ZeroClaw — persistent agent runtime & client
+export { createAgentServer } from './zeroclaw/runtime.js';
+export type { ZeroClawInstance } from './zeroclaw/runtime.js';
+export {
+  loadRuntime,
+  saveRuntime,
+  clearRuntime,
+  getAgentUrl,
+  pingAgent,
+  sendMessage,
+} from './zeroclaw/client.js';
+export type { ZeroClawRegistration } from './zeroclaw/client.js';
