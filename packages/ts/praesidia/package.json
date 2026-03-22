@@ -1,17 +1,17 @@
 {
   "name": "@praesidia/neurogent",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "description": "Run a team of AI experts in your terminal. Build and deploy production-ready A2A agents.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/praesidia/neurogent.git"
+    "url": "https://github.com/praesidia-ai/neurogent.git"
   },
-  "homepage": "https://github.com/praesidia/neurogent#readme",
+  "homepage": "https://github.com/praesidia-ai/neurogent#readme",
   "bugs": {
-    "url": "https://github.com/praesidia/neurogent/issues"
+    "url": "https://github.com/praesidi-ai/neurogent/issues"
   },
-  "keywords": ["ai", "agents", "llm", "terminal", "a2a", "multi-agent", "cli", "anthropic", "openai", "sdk"],
+  "keywords": ["ai", "agents", "llm", "terminal", "a2a", "multi-agent", "cli", "anthropic", "openai", "mistral", "sdk"],
   "type": "module",
   "bin": {
     "neurogent": "./dist/cli/index.js",
@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.0.0",
+    "@ai-sdk/mistral": "^1.0.0",
     "@ai-sdk/openai": "^1.0.0",
     "@hono/node-server": "^1.12.0",
     "@modelcontextprotocol/sdk": "^1.0.0",

@@ -2,7 +2,7 @@
 export type AgentId = string;
 
 export interface AgentModel {
-  provider: 'openai' | 'anthropic' | 'ollama';
+  provider: 'openai' | 'anthropic' | 'ollama' | 'mistral';
   name: string;
   maxTokens?: number;
   temperature?: number;

@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { createOpenAI } from '@ai-sdk/openai';
 import { createAnthropic } from '@ai-sdk/anthropic';
+import { createMistral } from '@ai-sdk/mistral';
 import { streamText, type CoreMessage } from 'ai';
 import { AgentDef, AgentModel, HistoryItem } from '../types.js';
 
@@ -13,6 +14,9 @@ function detectGlobalProvider(): AgentModel {
   if (process.env.OPENAI_API_KEY) {
     return { provider: 'openai', name: 'gpt-4o' };
   }
+  if (process.env.MISTRAL_API_KEY) {
+    return { provider: 'mistral', name: 'mistral-large-latest' };
+  }
   return { provider: 'ollama', name: 'llama3.2' };
 }
 
@@ -20,6 +24,10 @@ function buildModel(modelConfig: AgentModel): Parameters<typeof streamText>[0]['
   if (modelConfig.provider === 'anthropic') {
     const anthropic = createAnthropic({ apiKey: process.env.ANTHROPIC_API_KEY ?? '' });
     return anthropic(modelConfig.name);
+  }
+  if (modelConfig.provider === 'mistral') {
+    const mistral = createMistral({ apiKey: process.env.MISTRAL_API_KEY ?? '' });
+    return mistral(modelConfig.name);
   }
   if (modelConfig.provider === 'ollama') {
     const ollama = createOpenAI({
@@ -76,6 +84,10 @@ function calculateCost(model: AgentModel, inputTokens: number, outputTokens: num
     'gpt-4o': { input: 2.5, output: 10 },
     'gpt-4o-mini': { input: 0.15, output: 0.6 },
     'gpt-4-turbo': { input: 10, output: 30 },
+    'mistral-large': { input: 2, output: 6 },
+    'mistral-small': { input: 0.1, output: 0.3 },
+    'mistral-medium': { input: 0.4, output: 1.2 },
+    'codestral': { input: 0.1, output: 0.3 },
   };
   const key = Object.keys(pricing).find(k => model.name.includes(k));
   if (!key) return 0; // ollama/local = free
@@ -130,7 +142,7 @@ export async function* executeAgent(
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     if (msg.includes('401') || msg.toLowerCase().includes('api key')) {
-      yield `\n⚠ API key missing or invalid. Set ANTHROPIC_API_KEY or OPENAI_API_KEY.\n`;
+      yield `\n⚠ API key missing or invalid. Set ANTHROPIC_API_KEY, OPENAI_API_KEY, or MISTRAL_API_KEY.\n`;
     } else if (msg.includes('ECONNREFUSED') || msg.includes('fetch failed')) {
       yield `\n⚠ Cannot reach ${modelConfig.provider}. Check your connection or Ollama setup.\n`;
     } else {

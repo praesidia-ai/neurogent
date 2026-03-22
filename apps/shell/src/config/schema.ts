@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const AgentModelSchema = z.object({
-  provider: z.enum(['openai', 'anthropic', 'ollama']).default('openai'),
+  provider: z.enum(['openai', 'anthropic', 'ollama', 'mistral']).default('openai'),
   name: z.string(),
   max_tokens: z.number().int().positive().default(1024),
   temperature: z.number().min(0).max(2).default(0.7),

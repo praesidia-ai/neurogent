@@ -27,6 +27,7 @@
     "ai": "latest",
     "@ai-sdk/openai": "latest",
     "@ai-sdk/anthropic": "latest",
+    "@ai-sdk/mistral": "latest",
     "@modelcontextprotocol/sdk": "latest"
   },
   "devDependencies": {

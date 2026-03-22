@@ -42,7 +42,7 @@
 ```bash
 npm install -g @praesidia/neurogent
 
-export ANTHROPIC_API_KEY=sk-ant-...   # or OPENAI_API_KEY=sk-...
+export ANTHROPIC_API_KEY=sk-ant-...   # or OPENAI_API_KEY=sk-... or MISTRAL_API_KEY=...
 
 neurogent-shell --config examples/dev-trio.yaml
 ```
@@ -183,7 +183,7 @@ license: MIT
 capabilities: [web-search, summarization]
 
 model:
-  provider: anthropic          # swap to openai — zero code changes
+  provider: anthropic          # anthropic | openai | mistral | ollama — zero code changes
   name: claude-3-5-sonnet-20241022
 
 memory:
@@ -334,7 +334,7 @@ Neurogent is MIT-licensed and built in public. Every contribution matters — wh
 ### Get started
 
 ```bash
-git clone https://github.com/praesidia/neurogent
+git clone https://github.com/praesidia-ai/neurogent
 cd neurogent && npm install
 npm run build
 npm test
@@ -344,7 +344,7 @@ npm test
 
 | Area | What to build |
 |---|---|
-| **Provider adapters** | Add Gemini, Mistral, Groq, or Ollama support |
+| **Provider adapters** | Add Gemini, Groq, or other LLM providers |
 | **Agent packs** | Legal team, design team, data science team, finance team |
 | **MCP integrations** | Connect popular MCP servers (filesystem, browser, databases) |
 | **Shell features** | Session history, agent pinning, keyboard shortcuts |
@@ -377,6 +377,22 @@ Open an issue with:
 - What you expected
 - What happened
 - Node version + OS
+
+---
+
+## What's new in v0.3.0
+
+| Feature | What it does |
+|---|---|
+| **Mistral provider** | Use any Mistral model — `mistral-large-latest`, `mistral-small`, `codestral`, and more. Set `MISTRAL_API_KEY` and switch `provider: mistral` in your YAML. |
+| **Auto-detection** | Shell auto-selects Mistral when `MISTRAL_API_KEY` is present and no other key is set. |
+| **Cost metering** | Token costs tracked for `mistral-large`, `mistral-small`, `mistral-medium`, and `codestral`. |
+
+```yaml
+model:
+  provider: mistral
+  name: mistral-large-latest
+```
 
 ---
 

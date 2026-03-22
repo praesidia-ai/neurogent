@@ -18,6 +18,7 @@ import { MemoryStore, ConversationBufferMemory } from './memory.js';
 import { generateText, streamText, tool as aiTool, stepCountIs, LanguageModel, ToolSet } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { anthropic } from '@ai-sdk/anthropic';
+import { mistral } from '@ai-sdk/mistral';
 import { z } from 'zod';
 
 // ─── Model routing ────────────────────────────────────────────────────────────
@@ -27,6 +28,8 @@ function resolveModel(config: NeuroAgentConfig): LanguageModel {
   switch (provider) {
     case 'anthropic':
       return anthropic(name);
+    case 'mistral':
+      return mistral(name);
     case 'openai':
     default:
       return openai(name);
